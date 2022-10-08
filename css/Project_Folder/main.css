@@ -39,26 +39,12 @@
   padding: 10px;
 }
 
-.widget, .my-class {
+.my-class {
   background-color: white;
   padding: 20px;
-}
-
-.main-border, .my-class {
-  border: 1px solid #CCC;
 }
 
 .my-class {
-  font-weight: bold;
-  margin: 20px auto;
-}
-
-.widget, .my-class {
-  background-color: white;
-  padding: 20px;
-}
-
-.main-border, .my-class {
   border: 1px solid #CCC;
 }
 
