@@ -73,35 +73,6 @@
     }
 }
 
-
-// Assignment one-5
-
-%widget {
-    background-color: white;
-    padding: 20px;
-}
-
-%main-border {
-    border: 1px solid #CCC
-}
-
-%my-class {
-    font-weight: bold;
-    margin: 20px auto;
-}
-
-.widget, .my-class {
-    @extend %widget
-}
-
-.main-border, .my-class {
-    @extend %main-border
-}
-
-.my-class {
-    @extend %my-class
-}
-
 // Assignment one-6
 
 %widget {
