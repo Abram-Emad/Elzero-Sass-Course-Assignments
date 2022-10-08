@@ -1,0 +1,385 @@
+@use "./Helpers/vars" as *;
+@use "./Helpers/functions" as *;
+@use "./Layout/header" as *;
+@use "./Layout/footer" as *;
+@use "./Helpers/mixines" as *;
+
+// Assignment one-1
+
+.contact {
+    >.box {
+        padding: 15px;
+
+        >.title {
+            font-size: 18px;
+        }
+    }
+    .cat {
+        padding: 15px;
+    }
+    &.premium {
+        &::before {
+            content: "Premium Box";
+        }
+        &:hover {
+            background-color: #eee;
+        }
+    }
+}
+
+// Assignment one-2
+
+.class > {
+    .child {
+        padding: 10px;
+    }
+}
+
+.class {
+    > .child {
+        padding: 10px;
+    }
+}
+
+.class {
+    > {
+        .child {
+            padding: 10px;
+        }
+    }
+}
+
+// Assignment one-3
+
+.class {
+    font: {
+        weight: bold;
+        size: 20px;
+    }
+}
+
+// Assignment one-4
+
+.parent {
+    // .parent + .sibling { margin: 10px auto auto }
+    & + .sibling {
+        margin: auto {
+        top: 10px;
+    }
+    // .parent + .sibling ~ .last { padding: 10px }
+    & ~ .last {
+        padding: 10px;
+    }
+    }
+}
+
+
+// Assignment one-5
+
+%widget {
+    background-color: white;
+    padding: 20px;
+}
+
+%main-border {
+    border: 1px solid #CCC
+}
+
+%my-class {
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.widget, .my-class {
+    @extend %widget
+}
+
+.main-border, .my-class {
+    @extend %main-border
+}
+
+.my-class {
+    @extend %my-class
+}
+
+// Assignment one-6
+
+%widget {
+    background-color: white;
+    padding: 20px;
+}
+
+%main-border {
+    border: 1px solid #CCC
+}
+
+%my-class {
+    font-weight: bold;
+    margin: 20px auto;
+}
+
+.my-class {
+    @extend %widget
+}
+
+.my-class {
+    @extend %main-border
+}
+
+.my-class {
+    @extend %my-class
+}
+
+// Assignment one-7
+
+.box {
+    & h2, & p {
+        font-size: 20px;
+    @media (max-width: 575px) {
+        font-size: 16px;
+        }
+        & span {
+            font-weight: bold;
+        }
+    }
+}
+
+// Assignment one-8
+// The Code
+// Do Not Edit Here
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+$link-color: $green;
+$link-hover: $red;
+
+// Do Not Edit Here
+.box a {
+  color: $link-color;
+  &:hover {
+    color: $link-hover;
+  }
+}
+
+// Assignment one-10
+
+.box {
+    font-size: 20px;
+    &-holder {
+        width: 1000px;
+        &-content {
+            margin: auto;
+        }
+    }
+}
+
+// Assignment two-1
+
+$main: "school";
+$child: "box";
+$language: "en"; // English
+$gap: 20px;
+
+.#{$main} {
+    padding: $gap;
+    @if $language == "en" {
+        direction: ltr;
+    } @else {
+        direction: rtl;
+    }
+    margin-left: $gap;
+    & &-#{$child} {
+        padding: $gap - 10px;
+    }
+    &:hover &-#{$child} {
+        background-color: #eee;
+    }
+}
+
+// Assignment two-2
+
+// SASS Code
+$main-color: red;
+$alt-color: blue;
+
+// Needed Output
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: #{$main-color} */
+/* Website Theme Alternate Color Is: #{$alt-color} */
+
+// Assignment two-3
+
+$number: 9;
+
+.class {
+    @if $number > 8 {
+        color: blue;
+    } @else if $number > 5 {
+        color: green;
+    }  @else {
+    color: red;
+    }
+}
+
+// Assignment two-4
+
+$number: 10;
+$color: red;
+$theme: light;
+
+.class {
+    @if ($number > 10) && ($color == "red") && ($theme != "dark") {
+        color: red;
+    }
+}
+
+// Assignment two-4
+
+$number: 10;
+
+.box {
+    @if ($number == 10) {
+        background-color: #EEE;
+        text-align: center;
+    } @else if ($number != 10) {
+        @if ($number == 9) {            
+            background-color: #EEE;
+        } @else if  ($number != 9) {
+            @if ($number == 8) {            
+                /* // Nothing */
+            }
+        }
+    }
+}
+
+// Assignment three-1
+
+$direction: "right";
+
+.element {
+    &:before {
+        @include arrow("top");
+    }
+}
+
+.element {
+    &:before {
+        @include arrow("right");
+    }
+}
+
+.element {
+    &:before {
+        @include arrow("bottom");
+    }
+}
+
+.element {
+    &:before {
+        @include arrow("left");
+    }
+}
+
+// Assignment three-2
+
+$grid_cols: 16;
+
+@for $i from 1 through $grid_cols {
+    .col-#{$i} {
+        width: percentage($i / $grid_cols);
+    }
+}
+
+// Assignment three-3
+
+$names:
+  "books" 20px red 18,
+  "games" 30px green 18,
+  "dvds" 20px blue;
+
+@each $classes, $padding, $color, $font-size in $names {
+    .#{$classes}  {
+        padding: $padding;
+        border-bottom: 2px solid $color;
+        @if $font-size {
+            font-size: $font-size;
+        } @else {
+            font-size: 16px;
+        }
+        color: #444;
+    }
+}
+
+// Assignment three-4
+
+$init: 1;
+@for $i from 1 through 5 {
+    .circle-#{99 + $init} {
+      width: $init + 99px;
+      height: $init + 99px;
+      border-radius: (( $init + 99px ) / 2);
+    }
+    $init: $init + 100;
+}
+
+// Assignment three-5
+
+$start: 1;
+@while $start <= 500 {
+    .circle-#{99 + $start} {
+      width: $start + 99px;
+      height: $start + 99px;
+      border-radius: (( $start + 99px ) / 2);
+    }
+    $start: $start + 100;
+}
+
+// Assignment three-6
+
+textarea {
+    @include placeholder {
+        color: #777;
+    }
+}
+
+// Assignment three-7
+
+.box-one {
+    @include flex-center(500px);
+  }
+.box-two {
+    @include flex-center;
+  }
+
+// Assignment four-1
+
+$num: 2;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@for $i from 1 through 5 {
+    .box-#{$start} {
+        width: $start;
+        height: double($start);
+    }
+    $start: $start * $num;
+}
+
+// Assignment four-2
+
+@function get-total($nums...) {
+    $total: 0;
+    @each $num in $nums {
+        $total: $num + $total;
+    }
+    @return $total;
+  }
+
+.box {
+    top: get-total(100, 50, 20);
+    right: get-total(100, 50);
+  }

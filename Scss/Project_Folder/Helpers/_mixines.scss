@@ -1,0 +1,71 @@
+@mixin arrow($direction) {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+
+    @if $direction =="top" {
+        left: 50%;
+        top: -40px;
+        border-bottom-color: red;
+    }
+
+    @else if $direction =="right" {
+        top: 50%;
+        right: -40px;
+        border-left-color: red;
+    }
+
+    @else if $direction =="bottom" {
+        left: 50%;
+        bottom: -40px;
+        border-top-color: red;
+    }
+
+    @else if $direction =="left" {
+        top: 50%;
+        left: -40px;
+        border-right-color: red;
+    }
+
+    transform: translateX(-50%);
+
+}
+
+@mixin placeholder($color: false) {
+    &.placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+
+@mixin flex-center($dimensions: false) {
+    @if $dimensions {
+        width: $dimensions;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @else {
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
